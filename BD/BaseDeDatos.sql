@@ -6,7 +6,7 @@ CREATE TABLE person(
     phone VARCHAR(15)
 );
 
-CREATE TABLE user(
+CREATE TABLE Users(
     userId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     userName VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE userrole(
     userroleId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     userId INT NOT NULL,
     roleId INT NOT NULL,
-    FOREIGN KEY (userId) REFERENCES user(userId),
+    FOREIGN KEY (userId) REFERENCES Users(userId),
     FOREIGN KEY (roleId) REFERENCES role(roleId)
 );
 
@@ -61,7 +61,7 @@ CREATE TABLE invoice(
     date DATE,
     paymentMethod VARCHAR(50),
     userId INT NOT NULL,
-    FOREIGN KEY (userId) REFERENCES user(userId)
+    FOREIGN KEY (userId) REFERENCES Users(userId)
 );
 
 CREATE TABLE invoiceproduct(
