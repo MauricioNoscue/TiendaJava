@@ -3,6 +3,8 @@ package com.Sena.CrudJava.Model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +22,7 @@ public class Product {
     @Column(name = "ProductId")
     private int ProductId;
     @Column(name = "productName",length = 255, nullable = false)
-    private int productName;
+    private String productName;
     @Column(name = "description",columnDefinition = "TEXT")
     private String description;
     @Column(name = "productPrice")
@@ -30,18 +32,21 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "categoryId", referencedColumnName = "categoryId")
+    @JsonIgnoreProperties("products")
     private Category category;
+    
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<InvoicesProduct> InvoicesProduct = new ArrayList<>();
 
     public Product() {
     }
-    public Product(int productId, int productName, String description, double productPrice,
+    public Product(int productId, String productName, String description, double productPrice, Category category,
             List<ProductSupplier> productSupplier) {
         ProductId = productId;
         this.productName = productName;
         this.description = description;
         this.productPrice = productPrice;
+        this.category = category;
         this.productSupplier = productSupplier;
     }
     public int getProductId() {
@@ -50,10 +55,16 @@ public class Product {
     public void setProductId(int productId) {
         ProductId = productId;
     }
-    public int getProductName() {
+    public Category getCategory() {
+        return category;
+    }
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+    public String getProductName() {
         return productName;
     }
-    public void setProductName(int productName) {
+    public void setProductName(String productName) {
         this.productName = productName;
     }
     public String getDescription() {

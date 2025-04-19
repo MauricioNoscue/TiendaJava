@@ -47,7 +47,7 @@ CREATE TABLE supplier(
     phone VARCHAR(15),
     email VARCHAR(50)
 );
-
+ 
 CREATE TABLE productsupplier(
     productsupplierId INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     productId INT NOT NULL,

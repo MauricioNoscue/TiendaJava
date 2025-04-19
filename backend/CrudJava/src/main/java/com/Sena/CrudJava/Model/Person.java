@@ -23,9 +23,9 @@ public class Person {
     @Column(name = "LastName", length = 120, nullable = false)
     private String lastName;
     @Column(name = "Email", length = 100)
-    private String Email;
+    private String email;
     @Column(name = "Phone", length = 100)
-    private String Phone;
+    private String phone;
 
     public Person() {
     }
@@ -34,8 +34,8 @@ public class Person {
         this.personId = personId;
         this.personName = personName;
         this.lastName = lastName;
-        Email = email;
-        Phone = phone;
+        this.email = email;
+        this.phone = phone;
     }
 
     public int getPersonId() {
@@ -63,19 +63,19 @@ public class Person {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.phone = phone;
     }
 
     @OneToOne(mappedBy = "person")

@@ -3,6 +3,9 @@ package com.Sena.CrudJava.Model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,32 +20,34 @@ import jakarta.persistence.OneToOne;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "UserId")
-    private int UserId;
+    @Column(name = "userId")
+    private int userId;
 
     @Column(name= "UserName",length = 255, nullable = false,unique = true)
-    private String UserName;
+    private String userName;
     @Column(name = "Password",length = 255, nullable = false)
-    private String Password;
+    private String password;
 
     @OneToOne
     @JoinColumn(name = "personId", referencedColumnName = "personId")
     private Person person;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+ 
     private List<UserRole> userRoles = new ArrayList<>();
         
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Invoices> Invoices = new ArrayList<>();
 
     public int getUserId() {
-        return UserId;
+        return userId;
     }
 
     public Users(int userId, String userName, String password, Person person) {
-        UserId = userId;
-        UserName = userName;
-        Password = password;
+        this.userId = userId;
+        this.userName = userName;
+        this.password = password;
         this.person = person;
     }
 
@@ -50,23 +55,23 @@ public class Users {
     }
 
     public void setUserId(int userId) {
-        UserId = userId;
+        this.userId = userId;
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
     public void setUserName(String userName) {
-        UserName = userName;
+        this.userName = userName;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public Person getPerson() {

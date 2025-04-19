@@ -1,5 +1,7 @@
 package com.Sena.CrudJava.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,11 +17,13 @@ public class UserRole {
     @Column(name = "UserRoleId")
     private int UserRoleId;
     @ManyToOne
-    @JoinColumn(name = "userId", referencedColumnName = "UserId", nullable = false)
+    @JoinColumn(name = "userId", referencedColumnName = "userId", nullable = false)
+    @JsonIgnoreProperties({ "password", "person", "userRoles", "invoices"})
     private Users user;
 
     @ManyToOne
-    @JoinColumn(name = "roleId", referencedColumnName = "RoleId", nullable = false)
+    @JoinColumn(name = "roleId", referencedColumnName = "roleId", nullable = false)
+    @JsonIgnoreProperties({ "userRoles"})
     private Role role;
 
     public UserRole() {
@@ -57,3 +61,4 @@ public class UserRole {
     
 
 }
+  

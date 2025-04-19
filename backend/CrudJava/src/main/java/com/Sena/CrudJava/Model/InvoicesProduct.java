@@ -15,19 +15,6 @@ public class InvoicesProduct {
     @Column(name = "InvoicesProductId")
     private int InvoicesProductId;
 
-    @Column(name = "cantidad")
-    private int cantidad;
-
-    public InvoicesProduct() {
-    }
-
-    public InvoicesProduct(int invoicesProductId, int cantidad, Invoices invoices, Product product) {
-        InvoicesProductId = invoicesProductId;
-        this.cantidad = cantidad;
-        this.invoices = invoices;
-        this.product = product;
-    }
-
     @ManyToOne
     @JoinColumn(name = "invoicesId", referencedColumnName = "InvoicesId", nullable = false)
     private Invoices invoices;
@@ -35,6 +22,16 @@ public class InvoicesProduct {
     @ManyToOne
     @JoinColumn(name = "product", referencedColumnName = "ProductId", nullable = false)
     private Product product;
+
+
+    public InvoicesProduct() {
+    }
+
+    public InvoicesProduct(int invoicesProductId,  Invoices invoices, Product product) {
+        InvoicesProductId = invoicesProductId;
+        this.invoices = invoices;
+        this.product = product;
+    }
 
     public int getInvoicesProductId() {
         return InvoicesProductId;
@@ -44,13 +41,7 @@ public class InvoicesProduct {
         InvoicesProductId = invoicesProductId;
     }
 
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
+   
 
     public Invoices getInvoices() {
         return invoices;

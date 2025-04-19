@@ -16,7 +16,7 @@ public class Supplier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "SupplierId")
-    private int SupplierID;
+    private int supplierID;
     @Column(name = "address")
     private String address;
     @Column(name = "supplierName")
@@ -29,7 +29,7 @@ public class Supplier {
 
 
     public Supplier(int supplierID, String address, String supplierName, String phone, String email) {
-        SupplierID = supplierID;
+        this.supplierID = supplierID;
         this.address = address;
         this.supplierName = supplierName;
         this.phone = phone;
@@ -40,10 +40,10 @@ public class Supplier {
     @Column(name = "email")
     private String email;
     public int getSupplierID() {
-        return SupplierID;
+        return supplierID;
     }
     public void setSupplierID(int supplierID) {
-        SupplierID = supplierID;
+        this.supplierID = supplierID;
     }
     public String getAddress() {
         return address;

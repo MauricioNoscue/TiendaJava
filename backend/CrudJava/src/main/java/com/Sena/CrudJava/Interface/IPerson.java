@@ -7,4 +7,15 @@ import com.Sena.CrudJava.Model.Person;
 @Repository
 public interface IPerson extends JpaRepository<Person,Integer>{
 
+    /**
+     * jpaRepository incluye
+     * 
+     * SELECT
+     * UPDATE
+     * INSERT
+     * DELETE
+     * por defecto 
+     */
+
+
 }

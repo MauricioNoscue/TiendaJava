@@ -3,6 +3,7 @@ package com.Sena.CrudJava.Model;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +21,6 @@ public class Category {
 
     @Column(name="Name",length = 250, nullable = true)
     private String name;
-    
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products = new ArrayList<>();
 
