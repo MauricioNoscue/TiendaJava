@@ -1,0 +1,18 @@
+.button{
+  margin: 5%;
+}
+
+.select{
+  background-color: aqua;
+}
+
+.mi-estilo {
+  background-color: #F2F2F2;
+
+}
+
+.otro-estilo {
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+}
