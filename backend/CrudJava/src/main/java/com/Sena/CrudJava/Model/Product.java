@@ -3,6 +3,7 @@ package com.Sena.CrudJava.Model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -28,6 +29,7 @@ public class Product {
     @Column(name = "productPrice")
     private double productPrice;
     @OneToMany(mappedBy  = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<ProductSupplier> productSupplier = new ArrayList<>();
 
     @ManyToOne
@@ -36,6 +38,7 @@ public class Product {
     private Category category;
     
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+   
     private List<InvoicesProduct> InvoicesProduct = new ArrayList<>();
 
     public Product() {

@@ -25,6 +25,7 @@ export class PersonServiceService {
   public obtenerPorId(id:number):Observable<Person>{
     return this.http.get<Person>(`${this.urlBase}/${id}`)
   }
+  
   public Crear(person:PersonCreation){
     return this.http.post(this.urlBase,person);
   }

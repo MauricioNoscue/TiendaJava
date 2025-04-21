@@ -35,14 +35,14 @@ public class PersonController {
     }
 
     @PostMapping("register")
-    public String postMethodName(@RequestBody requestRegisterPerson person) {
-        personService.save(person);
-        return "registro ok";
+    public ResponseEntity<Object> postMethodName(@RequestBody requestRegisterPerson person) {
+        responseDTO response = personService.save(person);
+        return new ResponseEntity<>(response,response.getStatus());
     } 
     @PutMapping("update")
     public ResponseEntity<Object> putMethodName( @RequestBody requestRegisterPerson person) {
-      personService.update(person);
-      return new ResponseEntity<>("update ok",HttpStatus.OK);
+       responseDTO response = personService.update(person);
+      return new ResponseEntity<>(response,response.getStatus());
         
         
     }

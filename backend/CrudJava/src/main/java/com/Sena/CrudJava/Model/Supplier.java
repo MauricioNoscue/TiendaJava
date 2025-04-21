@@ -3,6 +3,9 @@ package com.Sena.CrudJava.Model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,6 +28,7 @@ public class Supplier {
     private String phone;
 
     @OneToMany(mappedBy = "supplier", cascade= CascadeType.ALL,orphanRemoval = true)
+    @JsonIgnore
     private List<ProductSupplier> productSupplier = new ArrayList<>(); 
 
 

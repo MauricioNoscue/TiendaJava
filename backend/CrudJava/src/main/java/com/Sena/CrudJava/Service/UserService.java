@@ -1,5 +1,6 @@
 package com.Sena.CrudJava.Service;
 
+import com.Sena.CrudJava.DTO.Idperson;
 import com.Sena.CrudJava.DTO.responseDTO;
 import com.Sena.CrudJava.DTO.requestRegister.requestRegisterUser;
 import com.Sena.CrudJava.Interface.IUser;
@@ -26,7 +27,13 @@ public class UserService   {
   public Optional<Users> finByIdUser(int id){
     return userData.findById(id);
   }
+ public Idperson getLastPersonId() {
+    return userData.traerPersona(); 
+  }
 
+  public requestRegisterUser login(String userName, String password) {
+    return userData.login(userName, password);
+  }
 
   public responseDTO save(requestRegisterUser user){
     responseDTO response = new responseDTO();

@@ -1,0 +1,35 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">Nombre del Proveedor</label>
+      <input type="text" formControlName="supplierName" class="form-control" />
+    </div>
+    
+    <div class="mb-3">
+      <label class="form-label">Dirección</label>
+      <input type="text" formControlName="address" class="form-control" />
+    </div>
+    
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" formControlName="email" class="form-control" />
+    </div>
+    
+    <div class="mb-3">
+      <label class="form-label">Número de teléfono</label>
+      <input type="text" formControlName="phone" class="form-control" />
+    </div>
+    
+    <div class="mb-3">
+      <label class="form-label">Producto que provee</label>
+      <select formControlName="productId" class="form-select">
+        <option [value]="null" disabled>Seleccione un producto</option>
+        <option *ngFor="let producto of productos" [value]="producto.productId">
+          {{ producto.productName }}
+        </option>
+      </select>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+      Crear Proveedor
+    </button>
+  </form>

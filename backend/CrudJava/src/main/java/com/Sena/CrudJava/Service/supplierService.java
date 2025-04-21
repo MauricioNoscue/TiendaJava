@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import com.Sena.CrudJava.DTO.IdSupplier;
+import com.Sena.CrudJava.DTO.Idperson;
 import com.Sena.CrudJava.DTO.responseDTO;
 import com.Sena.CrudJava.DTO.requestRegister.requestRegisterSupplier;
 import com.Sena.CrudJava.Interface.ISupplier;
@@ -25,6 +27,11 @@ public class supplierService {
     public Optional<Supplier> finByIdSupplier(int id ){
         return supplierData.findById(id);
     }
+
+     public IdSupplier getSupplier() {
+    return supplierData.traerSupplier();
+     }
+
 
     public responseDTO save(requestRegisterSupplier supplier){
         responseDTO response = new responseDTO();

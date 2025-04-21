@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.Sena.CrudJava.DTO.responseDTO;
 import com.Sena.CrudJava.DTO.requestRegister.requesRegisterProduct;
+import com.Sena.CrudJava.Interface.ICategory;
 import com.Sena.CrudJava.Interface.IProduct;
 import com.Sena.CrudJava.Model.Category;
 import com.Sena.CrudJava.Model.Product;
@@ -19,6 +20,8 @@ import com.Sena.CrudJava.Model.Product;
 public class productService {
        @Autowired
        private IProduct productData;
+       @Autowired
+       private ICategory categoryData;
 
 
     public List<Product> finAll(){
@@ -28,6 +31,8 @@ public class productService {
     public Optional<Product> finById(int id ){
         return productData.findById(id);
     }
+    
+   
 
     public responseDTO save(requesRegisterProduct product){
         responseDTO response = new responseDTO();
@@ -45,7 +50,11 @@ public class productService {
 
     public responseDTO update(requesRegisterProduct productUpdate){
         responseDTO response = new responseDTO();
-        var product = productData.findById(productUpdate.getCategoryId());
+
+        var product = productData.findById(productUpdate.getProductId());
+
+
+    
         if(product.isPresent()){
             Category category = new Category();
             category.setCategoryId(productUpdate.getCategoryId());

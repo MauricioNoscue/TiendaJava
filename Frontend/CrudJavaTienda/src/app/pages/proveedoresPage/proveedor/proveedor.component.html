@@ -1,0 +1,69 @@
+<div class="container mt-4">
+    <!-- Encabezado y botón para agregar -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h4>Proveedores</h4>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrearProveedor">
+        Agregar Proveedor
+      </button>
+    </div>
+  
+    <!-- Modal Crear -->
+    <div class="modal fade" id="modalCrearProveedor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Nueva Categoría</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <app-proveedor-crear
+            (proveedorCreado)="recargarProductosYCerrarModalCrear()"
+            ></app-proveedor-crear>
+          
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Listado de tarjetas -->
+    <div style="max-height: 80vh; overflow-y: auto; overflow-x: hidden;">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let card of cards">
+
+           <app-tarjeta-proveedor [proveedorr]="card" (editarproveedorr)="onEditarproveedorr($event)"
+           (eliminarproveedorr)="eliminarProveedor($event)"
+           ></app-tarjeta-proveedor>
+
+     
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal Editar -->
+  <div class="modal fade" id="modalEditarProveedor" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEditarLabel">Editar Categoría</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+
+            <!-- <app-Proveedor-editar
+                *ngIf="ProveedorSeleccionada"
+                [Proveedor]="ProveedorSeleccionada"
+                (ProveedorActualizado)="recargarProveedorsYCerrarModal()">
+            
+            </app-Proveedor-editar> -->
+            <h1>hi</h1>
+        
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,23 @@
+<form class="login-form"(ngSubmit)="onSubmit()">
+  <h2>Inicio sesión</h2>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <div class="input-icon">
+      <i>📧</i>
+      <input type="email" id="email" [(ngModel)]="userr.username" name="userName"placeholder="example@gmail.com" required />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <div class="input-icon">
+      <i>🔑</i>
+      <input type="password" id="password"[(ngModel)]="userr.password" name="password" placeholder="*********" required />
+    </div>
+  </div>
+
+  <div class="divider">¿No tienes cuenta? <a routerLink="/register" >Registrate</a></div>
+
+  <button type="submit" class="btn-login">Iniciar sesión</button>
+</form>

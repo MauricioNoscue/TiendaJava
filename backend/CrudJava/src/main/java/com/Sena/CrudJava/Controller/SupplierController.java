@@ -35,6 +35,12 @@ public class SupplierController {
         return  new ResponseEntity<>(supplier,HttpStatus.OK);
     }
 
+    @GetMapping("ultimoSu")
+    public ResponseEntity<Object> getByIdEntity() {
+    var supplierr = supplierService.getSupplier();
+    return new ResponseEntity<>(supplierr,HttpStatus.OK);
+    }
+
     @PostMapping("register")
     public ResponseEntity<Object> postMethodName(@RequestBody requestRegisterSupplier supplierr) {
         responseDTO supplierregister = supplierService.save(supplierr);
