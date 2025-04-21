@@ -5,16 +5,16 @@ import java.time.LocalDate;
 public class ResponseInvoicesDTO {
     private int invoicesId;
     private int userId;
-    private String nameInvoices;
+
     private LocalDate date;
 
     public ResponseInvoicesDTO() {
     }
 
-    public ResponseInvoicesDTO(int invoicesId, int userId, String nameInvoices, LocalDate date) {
+    public ResponseInvoicesDTO(int invoicesId, int userId,  LocalDate date) {
         this.invoicesId = invoicesId;
         this.userId = userId;
-        this.nameInvoices = nameInvoices;
+    
         this.date = date;
     }
 
@@ -34,13 +34,7 @@ public class ResponseInvoicesDTO {
         this.userId = userId;
     }
 
-    public String getNameInvoices() {
-        return nameInvoices;
-    }
-
-    public void setNameInvoices(String nameInvoices) {
-        this.nameInvoices = nameInvoices;
-    }
+  
 
     public LocalDate getDate() {
         return date;

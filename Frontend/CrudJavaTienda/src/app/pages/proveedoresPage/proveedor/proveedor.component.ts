@@ -4,6 +4,7 @@ import { proveedor } from '../../../../Models/proveedores.models';
 import { CommonModule } from '@angular/common';
 import { TarjetaProveedorComponent } from "../componentes/tarjeta-proveedor/tarjeta-proveedor.component";
 import { ProveedorCrearComponent } from "../componentes/proveedor-crear/proveedor-crear.component";
+import { RolService } from '../../../../service/rol.service';
 
 declare var bootstrap: any;
 @Component({
@@ -18,8 +19,8 @@ export class ProveedorComponent implements OnInit {
   modalEditarRef: any = null;
   modalCrearRef: any = null; 
   cards: proveedor[] = [];
-
-  constructor (private proveedorService: ProveedorService) {}
+  esAdmin: boolean = false;
+  constructor (private proveedorService: ProveedorService,private rolService: RolService) {}
 
   ngOnInit(): void {
     this.proveedorService.TraerTodo().subscribe({
@@ -30,6 +31,9 @@ export class ProveedorComponent implements OnInit {
       error: (err) => {
         console.error('Error al obtener categorías', err);
       }
+    });
+    this.rolService.esAdministrador().subscribe(esAdmin => {
+      this.esAdmin = esAdmin;
     });
   }
 

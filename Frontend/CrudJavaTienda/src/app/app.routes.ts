@@ -14,12 +14,13 @@ import { RegisterdosComponent } from './pages/registerPage/componentes/registerd
 import { CategoriaComponent } from './pages/CateoriaPage/categoria/categoria.component';
 import { ProductoComponent } from './pages/ProductosPage/producto/producto.component';
 import { ProveedorComponent } from './pages/proveedoresPage/proveedor/proveedor.component';
+import { FacturaComponent } from './pages/FacturasPage/factura/factura.component';
 
 export const routes: Routes = [
 
 
 
-
+  {path:'', component: RegisterComponent},
   {
     path: '',
     component: PrincipalComponent,
@@ -32,6 +33,8 @@ export const routes: Routes = [
       { path: 'categoria', component: CategoriaComponent },
       { path: 'productos', component: ProductoComponent },
       { path: 'proveedores', component: ProveedorComponent },
+      { path: 'facturas', component: FacturaComponent }
+
     ]
   },
   {path:'login', component: LoginComponent},

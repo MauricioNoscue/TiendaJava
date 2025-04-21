@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { CategoriaTarjetaComponent } from '../componentes/categoria-tarjeta/categoria-tarjeta.component';
 import { CategoriaCrearComponent } from '../componentes/categoria-crear/categoria-crear.component';
 import { CategoriaEditarComponent } from '../componentes/categoria-editar/categoria-editar.component';
+import { RolService } from '../../../../service/rol.service';
 declare var bootstrap: any;
 
 
@@ -19,8 +20,10 @@ export class CategoriaComponent implements OnInit {
   modalEditarRef: any = null;
   modalCrearRef: any = null; // Agrega esto junto a modalEditarRef
   cards: categoriaSelect[] = [];
-  constructor(private categoriaService: CategoriaService) {}
+  esAdmin: boolean = false;
+  constructor(private categoriaService: CategoriaService,private rolService: RolService) {}
   
+
   ngOnInit(): void {
     this.categoriaService.TraerTodo().subscribe({
       next: (data) => {
@@ -30,6 +33,9 @@ export class CategoriaComponent implements OnInit {
       error: (err) => {
         console.error('Error al obtener categorías', err);
       }
+    });
+    this.rolService.esAdministrador().subscribe(esAdmin => {
+      this.esAdmin = esAdmin;
     });
   }
 

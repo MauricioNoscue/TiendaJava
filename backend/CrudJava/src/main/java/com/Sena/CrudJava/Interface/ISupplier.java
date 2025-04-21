@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.Sena.CrudJava.DTO.IdSupplier;
-import com.Sena.CrudJava.DTO.Idperson;
 import com.Sena.CrudJava.Model.Supplier;
 
 @Repository

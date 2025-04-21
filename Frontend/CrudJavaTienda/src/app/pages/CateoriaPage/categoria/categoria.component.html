@@ -2,7 +2,7 @@
   <!-- Encabezado y botón para agregar -->
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h4>Categorías</h4>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrearCategoria">
+    <button *ngIf="esAdmin"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCrearCategoria">
       Agregar Categoría
     </button>
   </div>

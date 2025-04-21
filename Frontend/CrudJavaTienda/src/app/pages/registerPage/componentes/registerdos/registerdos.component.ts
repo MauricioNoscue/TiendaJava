@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { peronid, userCreate } from '../../../../../Models/user.models';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router'; 
+import { AuthService } from '../../../../../service/auth.service';
 @Component({
   selector: 'app-registerdos',
   imports: [RouterModule,FormsModule],
@@ -11,12 +12,13 @@ import { Router } from '@angular/router';
   styleUrl: './registerdos.component.css'
 })
 export class RegisterdosComponent {
-  constructor(private userService:UserService, private router: Router){
+  constructor(private userService:UserService, private router: Router,private authService: AuthService){
 
   }
 
  
 user: userCreate = {
+    userId:0,
     userName: '',
     password: '',
     person: {
@@ -28,18 +30,18 @@ user: userCreate = {
   onSubmit() {
     this.userService.ultimaPersona().subscribe(
       (data: peronid) => {
-        // Asignamos el personId antes de registrar
         this.user.person.personId = data.person_id;
-        console.log(this.user)
-        // Ahora sí registramos el usuario
+        console.log(this.user);
+        
         this.userService.register(this.user).subscribe(
           (response) => {
             console.log('Usuario registrado:', response);
+            // Guarda el usuario en el servicio
+            this.authService.setCurrentUser(this.user); // o this.user, dependiendo de qué datos necesites
             this.router.navigate(['/inicio']);
           },
           (error) => {
             console.error('Error al registrar el usuario:', error);
-
           }
         );
       },
@@ -47,8 +49,6 @@ user: userCreate = {
         console.error('Error al obtener el último personId:', error);
       }
     );
-  }
-
  
-
+  }
 }

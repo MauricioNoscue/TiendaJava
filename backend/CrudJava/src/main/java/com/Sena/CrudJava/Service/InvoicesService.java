@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import com.Sena.CrudJava.DTO.Idperson;
+import com.Sena.CrudJava.DTO.idInvoices;
 import com.Sena.CrudJava.DTO.responseDTO;
 import com.Sena.CrudJava.DTO.requestRegister.requestRegisterInvoices;
 import com.Sena.CrudJava.DTO.responseDTo.ResponseInvoicesDTO;
@@ -30,13 +32,17 @@ public class InvoicesService {
     public Optional<Invoices> finByIdSupplier(int id ){
         return invoicesData.findById(id);
     }
+     public idInvoices getInvoices() {
+    return invoicesData.traerInvoices();
+  }
+
 
 public List<ResponseInvoicesDTO> findAllInvoices() {
     return invoicesData.findAll().stream()
         .map(inv -> new ResponseInvoicesDTO(
             inv.getInvoicesId(),
             inv.getUsers().getUserId(),
-            inv.getNameInvoices(),
+        
             inv.getDate()
         ))
         .toList();
@@ -71,7 +77,7 @@ public List<ResponseInvoicesDTO> findAllInvoices() {
             user.setUserId(invoicesUpdate.getUserId());
     
             invoice.setUsers(user);
-            invoice.setNameInvoices(invoicesUpdate.getNameInvoices());
+      
             invoice.setDate(invoicesUpdate.getDate());
             // Si necesitas actualizar los productos, también debes manejarlos aquí
     
@@ -98,7 +104,7 @@ public List<ResponseInvoicesDTO> findAllInvoices() {
     return new Invoices(
         0,
         user,
-        invoices.getNameInvoices(),
+ 
         invoices.getDate(),
         null
     );

@@ -7,11 +7,12 @@
       <p class="card-text">{{proveedorr.phone}}</p>
 
       <button class="btn btn-sm btn-outline-primary mt-2"
+      *ngIf="esAdmin" 
       data-bs-toggle="modal"
       data-bs-target="#modalEditarProducto"
       (click)="onEditar3()">
  Editar
 </button>
-<button class="btn btn-sm btn-danger bottonmio" (click)="eliminar()">Eliminar</button>
+<button *ngIf="esAdmin"  class="btn btn-sm btn-danger bottonmio" (click)="eliminar()">Eliminar</button>
     </div>
   </div>

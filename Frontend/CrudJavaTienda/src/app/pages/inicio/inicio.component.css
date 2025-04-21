@@ -14,3 +14,11 @@
   background-color: #eaeaea;
 
 }
+
+.imagen{
+ width: 10rem;
+ height: 10rem;
+}
+.cartica{
+  align-items: center;
+}

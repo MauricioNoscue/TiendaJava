@@ -1,4 +1,5 @@
 export interface userCreate{
+    userId:number,
     userName: string,
     password:string,
     person:{

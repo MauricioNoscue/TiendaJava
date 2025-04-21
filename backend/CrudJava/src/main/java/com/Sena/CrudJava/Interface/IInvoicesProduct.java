@@ -13,24 +13,28 @@ import com.Sena.CrudJava.Model.InvoicesProduct;
 @Repository
 public interface IInvoicesProduct extends JpaRepository<InvoicesProduct,Integer> {
 
-
-@Query(value = """
-      SELECT p.product_id AS productId,
-           p.product_name AS productName,
-           s.invoices_id AS invoicesId,
-           s.name_invoices AS invoicesName
-    FROM invoices_product ps
-    INNER JOIN product p ON ps.product= p.product_id
-    INNER JOIN invoices s ON ps.invoices_id = s.invoices_id
-    """, nativeQuery = true)
-    List<ResponseInvoicesProduct> findAllProductinvoicesInfo();
+       @Query(value = """
+              SELECT 
+                  s.invoices_id AS invoicesId,
+                  s.date AS date,
+                  p.product_id AS productId,
+                  p.product_name AS productName,
+				  p.product_price AS productPrice,
+                  u.user_name AS userName
+              FROM invoices_product ps
+              INNER JOIN product p ON ps.product = p.product_id
+              INNER JOIN invoices s ON ps.invoices_id = s.invoices_id
+              INNER JOIN users u ON s.user_id = u.user_id
+          """, nativeQuery = true)
+          List<ResponseInvoicesProduct> findAllProductinvoicesInfo();
+          
 
 
     @Query(value = """
     SELECT p.product_id AS productId,
            p.product_name AS productName,
-           s.invoices_id AS invoicesId,
-           s.name_invoices AS invoicesName
+           s.invoices_id AS invoicesId
+          
     FROM invoices_product ps
     INNER JOIN product p ON ps.product= p.product_id
     INNER JOIN invoices s ON ps.invoices_id = s.invoices_id

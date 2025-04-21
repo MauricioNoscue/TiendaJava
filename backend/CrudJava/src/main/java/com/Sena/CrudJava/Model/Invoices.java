@@ -29,8 +29,7 @@ public class Invoices {
   
     private Users users;
     
-    @Column(name = "NameInvoices")
-    private String nameInvoices;
+  
 
     @Column(name="Date")
     private LocalDate date;
@@ -41,11 +40,10 @@ public class Invoices {
     public Invoices() {
     }
 
-    public Invoices(int invoicesId, Users users, String nameInvoices, LocalDate date,
+    public Invoices(int invoicesId, Users users, LocalDate date,
             List<InvoicesProduct> invoicesProduct) {
         this.invoicesId = invoicesId;
         this.users = users;
-        this.nameInvoices = nameInvoices;
         this.date = date;
         InvoicesProduct = invoicesProduct;
     }
@@ -66,13 +64,7 @@ public class Invoices {
         this.users = users;
     }
 
-    public String getNameInvoices() {
-        return nameInvoices;
-    }
 
-    public void setNameInvoices(String nameInvoices) {
-        this.nameInvoices = nameInvoices;
-    }
 
     public LocalDate getDate() {
         return date;

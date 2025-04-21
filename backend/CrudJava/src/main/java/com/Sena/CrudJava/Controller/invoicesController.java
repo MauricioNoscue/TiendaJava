@@ -39,6 +39,12 @@ public class invoicesController {
         return  new ResponseEntity<>(userRegister,userRegister.getStatus());
     }
 
+    @GetMapping("ultimo")
+public ResponseEntity<Object> getByIdEntity() {
+   var user = invoicesService.getInvoices();
+   return new ResponseEntity<>(user,HttpStatus.OK);
+}
+
     
 @PutMapping("update")
 public ResponseEntity<Object> putMethodName(@RequestBody requestRegisterInvoices invoicesupdate) {

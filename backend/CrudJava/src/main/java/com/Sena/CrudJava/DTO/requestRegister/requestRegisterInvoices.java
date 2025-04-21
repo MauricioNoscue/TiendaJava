@@ -7,17 +7,17 @@ public class requestRegisterInvoices {
 
     private int invoicesId;
     private int userId; // Se usa el ID en lugar del objeto completo
-    private String nameInvoices;
+
     private LocalDate date;
    
 
     public requestRegisterInvoices() {
     }
 
-    public requestRegisterInvoices(int invoicesId, int userId, String nameInvoices, LocalDate date) {
+    public requestRegisterInvoices(int invoicesId, int userId, LocalDate date) {
         this.invoicesId = invoicesId;
         this.userId = userId;
-        this.nameInvoices = nameInvoices;
+    
         this.date = date;
       
     }
@@ -38,13 +38,7 @@ public class requestRegisterInvoices {
         this.userId = userId;
     }
 
-    public String getNameInvoices() {
-        return nameInvoices;
-    }
-
-    public void setNameInvoices(String nameInvoices) {
-        this.nameInvoices = nameInvoices;
-    }
+ 
 
     public LocalDate getDate() {
         return date;
