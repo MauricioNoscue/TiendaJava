@@ -58,7 +58,14 @@
                 (ProveedorActualizado)="recargarProveedorsYCerrarModal()">
             
             </app-Proveedor-editar> -->
-            <h1>hi</h1>
+
+            <app-proveedor-editar
+            *ngIf="proveedorrSeleccionada"
+            [Proveedor]="proveedorrSeleccionada"
+            (ProveedorActualizado)="recargarProveedorYCerrarModal()"
+            
+            ></app-proveedor-editar>
+         
         
       
         </div>

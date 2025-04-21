@@ -1,8 +1,11 @@
-<div class="card" style="width: 100%;">
-  <img src="https://via.placeholder.com/286x180?text=Monitores" class="card-img-top" alt="Monitores">
+<div class="card yo" style="width: 100%;">
+  <img [src]="imagen" class="card-img-top imagenmia " [alt]="titulo" >
   <div class="card-body">
-    <h5 class="card-title">Monitores</h5>
-    <p class="card-text">Pantallas LED, curvas y más.</p>
-    <a href="#" class="btn btn-primary">Ver más</a>
+    <h5 class="card-title">{{ titulo }}</h5>
+    <p class="card-text">{{ descripcion }}</p>
+    <a [href]="link" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+      Ver más
+    </a>
+    
   </div>
 </div>

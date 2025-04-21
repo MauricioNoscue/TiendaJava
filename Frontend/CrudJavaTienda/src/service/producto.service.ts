@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../environments/environment.development';
 import { productCrear, productoSelect } from '../Models/producto.models';
@@ -28,5 +28,9 @@ export class ProductoService {
 
   public Eliminar(id: number) {
     return this.http.delete(`${this.urlBase}/${id}`);
+  }
+  buscarPorNombre(nombre: string) {
+    const params = new HttpParams().set('name', nombre);
+    return this.http.get<productoSelect[]>(`${this.urlBase}/buscar`, { params });
   }
 }

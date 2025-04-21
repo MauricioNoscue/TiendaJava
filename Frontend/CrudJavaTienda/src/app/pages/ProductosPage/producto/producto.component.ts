@@ -27,6 +27,7 @@ export class ProductoComponent implements OnInit {
   esAdmin: boolean = false;
   categorias: categoriaSelect[] = []; // Para almacenar las categorías
   categoriaSeleccionada: number = 0; // 0 significa "todas las categorías"
+  termBusqueda: string = ''; 
   
   constructor(
     private productoService: ProductoService,
@@ -43,6 +44,25 @@ export class ProductoComponent implements OnInit {
     });
   }
   
+  buscarProductos() {
+    if (!this.termBusqueda.trim()) {
+      // Si el campo de búsqueda está vacío, mostrar todos los productos
+      this.cargarProductos();
+      return;
+    }
+    
+    // Llamar al servicio para buscar productos por nombre
+    this.productoService.buscarPorNombre(this.termBusqueda).subscribe({
+      next: (data) => {
+        this.todosLosProductos = data; // Actualizamos la lista completa
+        this.cards = data; // Mostramos los resultados
+      },
+      error: (err) => {
+        console.error('Error al buscar productos', err);
+      }
+    });
+  }
+
   cargarCategorias() {
     this.categoriaService.TraerTodo().subscribe({
       next: (data) => {

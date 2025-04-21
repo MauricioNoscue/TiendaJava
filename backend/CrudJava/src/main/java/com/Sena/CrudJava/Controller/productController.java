@@ -1,5 +1,7 @@
 package com.Sena.CrudJava.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,8 @@ import com.Sena.CrudJava.DTO.responseDTO;
 import com.Sena.CrudJava.DTO.requestRegister.requesRegisterProduct;
 
 import com.Sena.CrudJava.Service.productService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("api/v1/product")
@@ -35,6 +39,12 @@ public ResponseEntity<Object> getByIdEntity(@PathVariable int id) {
    var product = productService.finById(id);
    return new ResponseEntity<>(product,HttpStatus.OK);
 }
+@GetMapping("buscar")
+public ResponseEntity<List<requesRegisterProduct>> getMethodName(@RequestParam String name) {
+    List<requesRegisterProduct> productos = productService.buscar(name);
+    return ResponseEntity.ok(productos);
+}
+
 
     @PostMapping("register")
     public ResponseEntity<Object> postMethodName(@RequestBody requesRegisterProduct productt) {

@@ -2,6 +2,7 @@ package com.Sena.CrudJava.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,21 @@ public class productService {
         return productData.findById(id);
     }
     
+    public List<requesRegisterProduct> buscar(String nombre){
+        List<Product> productos = productData.buscarPorNombreLike(nombre);
+        return productos.stream()
+        .map(producto -> {
+            requesRegisterProduct dto = new requesRegisterProduct();
+            dto.setProductId(producto.getProductId());
+            dto.setProductName(producto.getProductName());
+            dto.setDescription(producto.getDescription());
+            dto.setProductPrice(producto.getProductPrice());
+            // Configura otros campos si son necesarios
+            
+            return dto;
+        })
+        .collect(Collectors.toList());
+    }
    
 
     public responseDTO save(requesRegisterProduct product){
@@ -52,8 +68,8 @@ public class productService {
         responseDTO response = new responseDTO();
 
         var product = productData.findById(productUpdate.getProductId());
-
-
+        
+       
     
         if(product.isPresent()){
             Category category = new Category();

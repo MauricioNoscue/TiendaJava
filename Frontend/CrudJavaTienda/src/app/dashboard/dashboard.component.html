@@ -2,13 +2,19 @@
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <form class="d-flex me-auto" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       </form>
       
       <!-- Selector de Rol -->
       <app-selector-rol class="me-3"></app-selector-rol>
       
-      <button class="btn btn-outline-success perfil" type="submit">Search</button>
+
+      <div class="user-card" *ngIf="userData">
+        <div class="user-avatar">{{userData.userName ? userData.userName.charAt(0) : 'U'}}</div>
+        <div class="user-info">
+          <p class="user-name">{{userData.userName}}</p>
+          <p class="user-role">{{userData.role || 'Administrador'}}</p>
+        </div>
+      </div>
     </div>
   </div>
 </nav>

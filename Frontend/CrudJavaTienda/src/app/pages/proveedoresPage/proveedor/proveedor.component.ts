@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { TarjetaProveedorComponent } from "../componentes/tarjeta-proveedor/tarjeta-proveedor.component";
 import { ProveedorCrearComponent } from "../componentes/proveedor-crear/proveedor-crear.component";
 import { RolService } from '../../../../service/rol.service';
+import { ProveedorEditarComponent } from "../componentes/proveedor-editar/proveedor-editar.component";
 
 declare var bootstrap: any;
 @Component({
   selector: 'app-proveedor',
-  imports: [CommonModule, TarjetaProveedorComponent, ProveedorCrearComponent],
+  imports: [CommonModule, TarjetaProveedorComponent, ProveedorCrearComponent, ProveedorEditarComponent],
   templateUrl: './proveedor.component.html',
   styleUrl: './proveedor.component.css'
 })

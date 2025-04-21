@@ -2,7 +2,7 @@
   <!-- Primera fila: Cajas resumen -->
   <div class="row mb-4 primeras">
     <div class="col-md-4">
-      <div class="card text-center p-3 cartica" >
+      <div class="card text-center p-3 cartica" routerLink="/categoria" >
         <h6 class="fw-bold">Categorías</h6>
         <img src="assets/categoria.png" alt="" class="imagen">
         
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div class="card text-center p-3 cartica">
+      <div class="card text-center p-3 cartica" routerLink="/productos">
         <h6 class="fw-bold">Productos</h6>
         <img src="assets/logo.png" alt="" class="imagen">
      
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div class="card text-center p-3 cartica">
+      <div class="card text-center p-3 cartica" routerLink="/proveedores">
         <h6 class="fw-bold">Proveedores</h6>
         <img src="assets/proveedor.png" alt="" class="imagen">
       </div>
@@ -32,16 +32,34 @@
         <div class="row">
           <!-- Computadores -->
           <div class="col-md-4 mb-4">
-            <app-card></app-card>
+           <app-card
+            [titulo]="'Java'"
+            [descripcion]="'Lenguaje backend.'"
+            [imagen]="'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg'"
+            [link]="'https://www.oracle.com/java/'">
+          </app-card>
+
 
           </div>
           <!-- Monitores -->
           <div class="col-md-4 mb-4">
-            <app-card></app-card>
+           <app-card
+            [titulo]="'Angular'"
+            [descripcion]="'Lenguaje Front-End.'"
+            [imagen]="'https://angular.io/assets/images/logos/angular/angular.svg'"
+            [link]="'https://angular.io/'">
+          </app-card>
+
           </div>
           <!-- Teclados -->
           <div class="col-md-4 mb-4">
-            <app-card></app-card>
+           <app-card
+            [titulo]="'Postgres'"
+            [descripcion]="'Motor de bases de datos.'"
+            [imagen]="'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg'"
+            [link]="'https://www.postgresql.org/'">
+          </app-card>
+
 
           </div>
           
@@ -52,8 +70,11 @@
     <!-- Producto más vendido -->
     <div class="col-md-3">
       <div class="card text-center p-3 h-100 cartica ">
-        <h6 class="fw-bold">Hola, bienvenido a mi Tienda</h6>
-        <img src="assets/saludo.png" alt="" class="imagen">
+      
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg
+        " alt="" class="imagen">
+        <h6 class="fw-bold g">Repositorio del proyecto</h6>
+        <a href="https://github.com/MauricioNoscue/TiendaJava"  target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver</a>
       </div>
     </div>
   </div>
